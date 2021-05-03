@@ -24,7 +24,8 @@ def getPage(request, title):
     if md == None:
         return render(request, "encyclopedia/entry.html", {
             "title": "Error",
-            "content": "<h1>Error</h1><p>The requested page was not found.<p>"
+            "content": "<h1>Error</h1><p>The requested page was not found.<p>",
+            "exist": True
         })
     else:
         html = markdown2.markdown(md)
@@ -32,24 +33,6 @@ def getPage(request, title):
             "title": title,
             "content": html
         })
-"""
-def getHtml(md):
-    "It was just a try...:"
-    head = re.compile('#\s*[a-zA-Z]*')
-    title = re.sub(r"#\s*", "", head.match(md).group())
-    body = re.sub(r"#\s*[a-zA-Z]*\n*", "", md)
-    link = re.findall(r'\[[a-zA-Z]*\]', md)
-
-    if link:
-        link = re.sub("\[|\]", "", (re.findall(r'\[[a-zA-Z]*\]', md)).group())
-        url = re.sub("\]|\(|\)", "", (re.search(r'\]\(/[a-zA-Z]*/[a-zA-Z]*\)', md)).group())
-        body1 = re.sub("\[", "", (re.search(r'[a-zA-Z\s*]*\[', body).group()))
-        body2 = re.sub("\)", "", (re.search(r'\)\s*[a-zA-Z\s*]*.', body).group()))
-        body = body1+'<a href="'+url+'">'+link+'</a>'+body2
-
-    html = '<h1>'+title+'</h1>'+'<br>'+'<p>'+body+'</p>'
-    return html
-"""
 
 def search(request):
     """
