@@ -32,7 +32,6 @@ def getPage(request, title):
         return render(request, "encyclopedia/entry.html", {
             "title": title,
             "content": html,
-            "exist": True
         })
 
 def search(request):
