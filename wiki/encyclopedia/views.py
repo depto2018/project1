@@ -57,7 +57,8 @@ def search(request):
     else:
         return render(request, "encyclopedia/entry.html", {
             "title": "Error",
-            "content": "<h1>Error</h1><p>The requested page was not found.<p>"
+            "content": "<h1>Error</h1><p>The requested page was not found.<p>",
+            "exist": True
         })
 
 def create(request):
