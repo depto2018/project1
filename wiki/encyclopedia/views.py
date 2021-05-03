@@ -31,7 +31,8 @@ def getPage(request, title):
         html = markdown2.markdown(md)
         return render(request, "encyclopedia/entry.html", {
             "title": title,
-            "content": html
+            "content": html,
+            "exist": True
         })
 
 def search(request):
